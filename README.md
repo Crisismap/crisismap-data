@@ -6,7 +6,7 @@
 
 # create database
 
-```sql
+```bash
 psql -f create_crisismap_db.sql
 psql -f create_crisismap_data_tables.sql
 ```
