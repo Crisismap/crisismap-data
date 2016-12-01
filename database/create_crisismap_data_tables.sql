@@ -15,9 +15,9 @@ CREATE TABLE raw_news(
     rn_created timestamp without time zone,
     rn_link character varying(1024) NOT NULL,
     rn_title character varying(1024) NOT NULL,
-    rn_body text NOT NULL,
+    rn_body text NOT NULL
 );
-ALTER TABLE ommodity_group OWNER TO crisismap;
+ALTER TABLE raw_news OWNER TO crisismap;
 
 
 DROP TABLE IF EXISTS news;
@@ -29,7 +29,7 @@ CREATE TABLE news(
     n_is_licalized boolean NOT NULL,
     n_toponyms character varying(1024)
 );
-ALTER TABLE commodity_group OWNER TO crisismap;
+ALTER TABLE news OWNER TO crisismap;
 
 
 DROP TABLE IF EXISTS news_image;
@@ -39,4 +39,4 @@ CREATE TABLE news_image(
     ni_url varchar(1024),
     ni_image bytea
 );
-ALTER TABLE commodity_group OWNER TO crisismap;
+ALTER TABLE news_image OWNER TO crisismap;
