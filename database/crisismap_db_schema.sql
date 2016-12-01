@@ -47,21 +47,31 @@ SET default_with_oids = false;
 --
 -- Name: news_rss; Type: TABLE; Schema: crisismap_data; Owner: postgres
 --
-
-CREATE TABLE news_rss (
-    nr_id integer NOT NULL,
-    nr_guid character varying(1024) NOT NULL,
-    nr_title character varying(1024) NOT NULL,
-    nr_link character varying(1024) NOT NULL,
-    nr_description text NOT NULL,
-    nr_publication_date timestamp without time zone,
-    nr_type_id integer NOT NULL,
-    nr_is_licalized boolean NOT NULL,
-    nr_toponyms character varying(1024)
+CREATE TABLE raw_news(
+    rn_id integer NOT NULL,
+    rn_guid character varying(1024) NOT NULL,
+    rn_created timestamp without time zone,
+    rn_link character varying(1024) NOT NULL,
+    rn_title character varying(1024) NOT NULL,
+    rn_body text NOT NULL,
 );
 
+CREATE TABLE news(
+    n_id integer NOT NULL,
+    n_raw_news_id integer,
+    n_publication_date timestamp without time zone,
+    n_type_id integer NOT NULL,
+    n_is_licalized boolean NOT NULL,
+    n_toponyms character varying(1024)
+);
 
-ALTER TABLE news_rss OWNER TO postgres;
+CREATE TABLE news_image(
+    ni_id serial,
+    ni_news_id integer,
+    ni_url varchar(1024),
+    ni_image bytea
+);
+    
 
 --
 -- Name: news_rss_nr_id_seq; Type: SEQUENCE; Schema: crisismap_data; Owner: postgres
