@@ -24,8 +24,8 @@ CREATE TABLE raw_news_media(
     rm_last_modified timestamp without time zone,    
     rm_raw_news_id integer,
     rm_url varchar(1024),
-    CONSTRAINT pk_raw_news_media PRIMARY KEY (rm_id),
-    FOREIGN KEY (so_id) REFERENCES so_headers (ID)
+    CONSTRAINT pk_raw_news_media PRIMARY KEY (rm_id)
+--FOREIGN KEY (so_id) REFERENCES so_headers (ID)
 );
 ALTER TABLE raw_news_media OWNER TO crisismap;
 
